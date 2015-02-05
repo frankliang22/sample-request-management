@@ -1,0 +1,116 @@
+
+<openerp>
+    <data>
+
+      <record model="ir.actions.act_window" id="main_list_action">
+        <field name="name">SRM</field>
+	      <field name="res_model">srm.main</field>
+	      <field name="view_type">form</field>
+	      <field name="view_mode">tree,form</field>
+              <field name="help" type="html">
+		<p class="oe_view_nocontent_create">Create a new SR</p>
+					
+		</field>
+           </record>
+
+           <record model="ir.ui.view" id="main_form_view">
+             <field name="name">main.form</field>
+	           <field name="model">srm.main</field>
+	           <field name="arch" type="xml">
+	            <form string="Main Form" version="7.0">
+
+          <header>
+                  
+                    <button string="Open" type="object"
+                            name="set_open"  states="close" class="oe_highlight"/>
+                    <button string="Close" type="object" 
+                            name="set_close"  states="open" class="oe_highlight"/>
+                    <field name="state" widget="statusbar" statusbar_visible="open,close" />
+                  
+          </header>
+               
+<notebook>
+<page string="Normal Info" name="normal" >
+ 		      
+     <group colspan="2" col="2">
+                      <field name="sample_type" />
+                      <field name="name" />
+                      <field name="sr_date" />
+                      <field name="sr_cost" /> 
+                      <field name="project_id" />
+                      <field name="sr_customer" />
+                      <field name="pic" />
+                      <field name="sr_sap" attrs="{'required':[('sample_type', '=', 'transducer')]}"/>
+                      <field name="sr_marketing" />
+                      <field name="qty" />
+                      <field name="sr_status" />
+                      <field name="lte" />
+                      <field name="pic1" />
+                      <field name="pic2" />
+                      <field name="srm" />
+                      <field name="stock" />
+                      <field name="feedback" />
+                      <field name="freight1" />
+                      <field name="freight" />
+                      <field name="shipping" />
+                      <field name="samplesfee" />
+                      <field name="unitprice" />
+                      <field name="amount" />
+                      <field name="total" />
+                      <field name="dn" />
+                      <field name="remark" />
+                      <field name="sample_requirements" />
+                 </group>
+</page>
+    <page string="Dates" name="dates">
+             <group colspan="2" col="2">
+                      <field name="target" />
+                      <field name="material1" /> 
+                      <field name="material2" />
+                      <field name="drawing" />
+                      <field name="ready" />
+                      <field name="samplestart" />
+                      <field name="samplefinish" />
+                      <field name="teststart" />
+                      <field name="testfinish" />
+                      <field name="inspection" />
+                      <field name="qecomment" /> 
+                      <field name="packaging" />
+                      <field name="exact" />
+                      <field name="submission" />
+                      <field name="tracking" />
+                      <field name="customerfeedback" />
+                      <field name="duration" />
+                      <field name="delay" />
+                      <field name="delaycomment" />
+                 </group>
+                    </page> 
+ </notebook>                     
+        </form>     
+        </field>             
+</record>
+	      <record model="ir.ui.view" id="course_tree_view">
+        <field name="name">main.form</field>
+        <field name="model">srm.main</field>
+        <field name="arch" type="xml">
+          <tree string="Main Tree" version="7.0">
+           <field name="sample_type" />
+           <field name="sr_date" />
+           <field name="name" />
+           <field name="sr_customer" />
+           <field name="sr_sap" />
+           <field name="sr_marketing" />
+           <field name="pic1" />
+           <field name="pic2" />
+         </tree>
+       </field>
+     </record>
+          
+
+          <menuitem id="main_srm_menu" name="SRM" />
+          <menuitem id="srm_menu" name="SRM" parent="main_srm_menu" />
+          <menuitem id="main_menu" name="SR Information" parent="srm_menu" action="main_list_action" />
+  
+  </data>
+</openerp>
+
